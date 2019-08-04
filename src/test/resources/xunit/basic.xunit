@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xunit description="" name="Basic Units" packageId="test">
+ <properties/>
+ <units>
+  <processor class="default" description="" module="" name="processor" reference=""/>
+  <converter class="default" description="" module="" name="converter" reference=""/>
+  <processor class="" description="" module="" name="reference" reference="processor"/>
+  <bi_branch class="default" description="" name="a bibranch" type="processor">
+   <validator class="default" description="" invalidLabel="false" module="" name="validator" reference="" validLabel="true"/>
+   <valid_unit>
+    <processor class="default" description="" module="" name="processor" reference=""/>
+   </valid_unit>
+   <invalid_unit>
+    <processor class="default" description="" module="" name="processor" reference=""/>
+   </invalid_unit>
+  </bi_branch>
+  <branch class="default" description="" name="a branch" type="processor">
+   <locator class="default" default_key="" description="" module="" name="locator" reference=""/>
+   <branch_unit key="key 1">
+    <processor class="default" description="" module="" name="processor" reference=""/>
+   </branch_unit>
+   <branch_unit key="key 2">
+    <processor class="default" description="" module="" name="processor" reference=""/>
+   </branch_unit>
+   <branch_unit key="key 3">
+    <processor class="default" description="" module="" name="processor" reference=""/>
+   </branch_unit>
+  </branch>
+  <chain class="default" description="" name="a chain" type="processor">
+   <processor class="default" description="" module="" name="unit 1" reference=""/>
+   <processor class="default" description="" module="" name="unit 2" reference=""/>
+   <processor class="default" description="" module="" name="unit 3" reference=""/>
+  </chain>
+  <decorator class="default" description="" name="a decorator" type="converter">
+   <decorator_unit>
+    <converter class="default" description="" module="" name="converter" reference=""/>
+   </decorator_unit>
+  </decorator>
+  <adapter class="default" description="" name="an adapter" type="converter">
+   <adapter_unit>
+    <processor class="default" description="" module="" name="processor" reference=""/>
+   </adapter_unit>
+  </adapter>
+  <do_while class="default" description="" name="do-while loop" type="processor">
+   <validator class="default" description="" invalidLabel="false" module="" name="validator" reference="" validLabel="true"/>
+   <loop_unit>
+    <processor class="default" description="" module="" name="update sum" reference=""/>
+   </loop_unit>
+  </do_while>
+  <while class="default" description="" name="while loop" type="processor">
+   <validator class="default" description="" invalidLabel="false" module="" name="validator" reference="" validLabel="true"/>
+   <loop_unit>
+    <processor class="default" description="" module="" name="update sum" reference=""/>
+   </loop_unit>
+  </while>
+  <chain class="com.xrosstools.xunit.spring.unit.MyChainImpl" description="" name="MyChain" type="processor">
+   <processor class="default" description="" module="" name="unit 1" reference="">
+    <property key="showMessage" value="arrive processor 1"/>
+   </processor>
+   <processor class="default" description="" module="" name="unit 2" reference="">
+    <property key="showMessage" value="arrive processor 2"/>
+   </processor>
+   <processor class="default" description="" module="" name="unit 3" reference="">
+    <property key="showMessage" value="arrive processor 3"/>
+   </processor>
+  </chain>
+  <branch class="com.xrosstools.xunit.spring.unit.MyBranchImpl" description="" name="MyBranch" type="processor">
+   <locator class="default" default_key="key2" description="" module="" name="locator" reference=""/>
+   <branch_unit key="key1">
+    <processor class="default" description="" module="" name="node 1" reference="">
+     <property key="showMessage" value="processor 1 selected"/>
+    </processor>
+   </branch_unit>
+   <branch_unit key="key2">
+    <processor class="default" description="" module="" name="node 2" reference="">
+     <property key="showMessage" value="processor 2 selected"/>
+    </processor>
+   </branch_unit>
+   <branch_unit key="key3">
+    <processor class="default" description="" module="" name="node 3" reference="">
+     <property key="showMessage" value="processor 3 selected"/>
+    </processor>
+   </branch_unit>
+  </branch>
+ </units>
+</xunit>

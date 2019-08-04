@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xunit description="" name="Sample" packageId="test">
+ <properties>
+  <property key="packageId" value="test"/>
+  <property key="Name" value="Sample"/>
+ </properties>
+ <units>
+  <chain class="default" description="" name="LoginFlow" type="processor">
+   <bi_branch class="default" description="" name="LoginBranch" type="processor">
+    <validator class="com.xrosstools.xunit.spring.unit.UsernamePasswordValidator" description="" invalidLabel="false" module="" name="UsernamePasswordValidator" reference="" validLabel="true"/>
+    <valid_unit>
+     <bi_branch class="default" description="" name="NetworkBranch" type="processor">
+      <validator class="com.xrosstools.xunit.spring.unit.OuterNetValidator" description="" invalidLabel="false" module="" name="OuterNetValidator" reference="" validLabel="true"/>
+      <valid_unit>
+       <processor class="com.xrosstools.xunit.spring.unit.SmsProcessor" description="" module="" name="SmsProcessor" reference=""/>
+      </valid_unit>
+     </bi_branch>
+    </valid_unit>
+   </bi_branch>
+  </chain>
+ </units>
+</xunit>
