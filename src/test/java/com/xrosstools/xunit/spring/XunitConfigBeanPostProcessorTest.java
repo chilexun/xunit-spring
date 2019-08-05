@@ -41,9 +41,12 @@ public class XunitConfigBeanPostProcessorTest {
 
     @Test
     public void referenceNodeBean() {
-        Processor referBean = beanFactory.getBean(factoryBeanName + ":reference", Processor.class);
+        Processor parentBean = beanFactory.getBean(factoryBeanName + ":processor", Processor.class);
         MapContext ctx = new MapContext();
         ctx.put("key", "123");
+        parentBean.process(ctx);
+
+        Processor referBean = beanFactory.getBean(factoryBeanName + ":reference", Processor.class);
         referBean.process(ctx);
     }
 

@@ -188,7 +188,7 @@ public class XunitBeanDefinitionParser implements XunitConstants {
 
         String className = getAttribute(node, CLASS);
         String reference = getAttribute(node, REFERENCE);
-        Class<?> beanClass = defaultClass;
+        Class<?> beanClass = null;
         if(!isEmptyOrDefault(className)) {
             beanClass = ClassUtils.resolveClassName(className, processor.getClassLoader());
             builder = BeanDefinitionBuilder.genericBeanDefinition(beanClass);
@@ -202,6 +202,7 @@ public class XunitBeanDefinitionParser implements XunitConstants {
                 builder.setParentName(generateUnitBeanName(refFactoryHolder.getBeanName(), reference));
             }
         } else {
+            beanClass = defaultClass;
             builder = BeanDefinitionBuilder.genericBeanDefinition(defaultClass);
             if(defaultClass.equals(DefaultUnitImpl.class)) {
                 builder.addConstructorArgValue(null);

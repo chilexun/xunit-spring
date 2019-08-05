@@ -3,9 +3,13 @@
 <xunit description="" name="Basic Units" packageId="test">
  <properties/>
  <units>
-  <processor class="default" description="" module="" name="processor" reference=""/>
+  <processor class="default" description="" module="" name="processor" reference="">
+   <property key="showMessage" value="Processor.process()"/>
+  </processor>
   <converter class="default" description="" module="" name="converter" reference=""/>
-  <processor class="" description="" module="" name="reference" reference="processor"/>
+  <processor class="" description="" module="" name="reference" reference="processor">
+   <property key="showMessage" value="Reference process"/>
+  </processor>
   <bi_branch class="default" description="" name="a bibranch" type="processor">
    <validator class="default" description="" invalidLabel="false" module="" name="validator" reference="" validLabel="true"/>
    <valid_unit>

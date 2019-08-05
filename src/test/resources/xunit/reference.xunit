@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xunit description="" name="reference" packageId="test">
+ <properties>
+  <property key="packageId" value="test"/>
+  <property key="Name" value="reference"/>
+ </properties>
+ <units>
+  <chain class="default" description="" name="reference chain" type="processor">
+   <processor class="" description="" module="xunit/basic.xunit" name="unit 1" reference="processor"/>
+   <processor class="" description="" module="xunit/basic.xunit" name="unit 2" reference="MyChain"/>
+   <processor class="default" description="" module="" name="unit 3" reference="">
+    <property key="showMessage" value="original processor 3"/>
+   </processor>
+  </chain>
+ </units>
+</xunit>
