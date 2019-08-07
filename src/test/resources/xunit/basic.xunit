@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <xunit description="" name="Basic Units" packageId="test">
- <properties/>
+ <properties>
+  <property key="packageId" value="test"/>
+  <property key="Name" value="Basic Units"/>
+ </properties>
  <units>
   <processor class="default" description="" module="" name="processor" reference="">
    <property key="showMessage" value="Processor.process()"/>
+   <property key="showApplicationProperties" value="packageId"/>
   </processor>
   <converter class="default" description="" module="" name="converter" reference=""/>
   <processor class="" description="" module="" name="reference" reference="processor">

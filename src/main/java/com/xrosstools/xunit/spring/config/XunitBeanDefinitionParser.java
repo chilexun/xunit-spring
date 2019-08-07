@@ -211,7 +211,7 @@ public class XunitBeanDefinitionParser implements XunitConstants {
 
         if(beanClass != null) {
             if(ApplicationPropertiesAware.class.isAssignableFrom(beanClass)) {
-                builder.addPropertyValue("applicationProperties", applicationProperties);
+                builder.addPropertyValue("applicationProperties", new LinkedHashMap<>(applicationProperties));
             }
             if(UnitPropertiesAware.class.isAssignableFrom(beanClass)) {
                 builder.addPropertyValue("unitProperties", getProperties(node));
