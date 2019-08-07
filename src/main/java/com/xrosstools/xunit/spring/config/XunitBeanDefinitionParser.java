@@ -274,9 +274,6 @@ public class XunitBeanDefinitionParser implements XunitConstants {
                 childBeanNames.add(childNodeBean.getBeanName());
             }
         }
-        if(childBeanNames.isEmpty()) {
-            return chainDefBuilder.getBeanDefinition();
-        }
 
         Class<?> beanClass = chainDefBuilder.getBeanDefinition().getBeanClass();
         Constructor<?>[] constructors = beanClass.getDeclaredConstructors();
@@ -352,9 +349,6 @@ public class XunitBeanDefinitionParser implements XunitConstants {
             if (branchUnit != null) {
                 childBeans.put(getAttribute(child, KEY), new RuntimeBeanReference(branchUnit.getBeanName()));
             }
-        }
-        if(locatorNode==null || childBeans.isEmpty()) {
-            return branchDefBuilder.getBeanDefinition();
         }
 
         Class<?> branchBeanClass = branchDefBuilder.getBeanDefinition().getBeanClass();
