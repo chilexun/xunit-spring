@@ -25,8 +25,8 @@ A Spring integration for xUnit
 ```
 
 **添加Spring配置**
-
-在工程中的Spring Java Configuration类上添加`@EnableXunit`注解，示例如下：
+- 使用JAVA Configuration  
+在工程中的Configuration类上添加`@EnableXunit`注解，示例如下：
 ```java
 @Configuration
 @EnableXunit("xunit/calculator.xunit")
@@ -39,6 +39,17 @@ public class SpringLotteryDrawSample {
 }
 ```
 注解的参数为xUnit配置文件的路径，可以配置多个。参数格式也支持`Spring Resources`接口的path格式，如例子中的path可写成classpath:xunit/*.xunit，具体可参考[Spring Resources](https://docs.spring.io/spring/docs/4.3.x/spring-framework-reference/html/resources.html)
+- 使用XML配置  
+在Spring的context配置文件中添加bean配置，`<constructor-arg>`参数为xUnit配置文件的路径，在SpringMVC中配置示例如下：
+```xml
+<bean class="com.xrosstools.xunit.spring.config.XunitConfigBeanPostProcessor">
+    <constructor-arg>
+        <set>
+            <value>/WEB-INF/basic.xunit</value>
+        </set>
+    </constructor-arg>
+</bean>
+```
 
 **修改业务代码**
 
@@ -122,7 +133,7 @@ public class UsernamePasswordValidator implements Validator {
 }
 ```
 # 原理及问题
-###功能限制
+### 功能限制
 1. xUnit配置文件修改后不支持自动加载  
 因为所有Unit托管在Spring容器中，所以在配置文件修改后，需要用户代码主动调用`ApplicationContext.refresh()`来刷新Unit的Bean定义  
 2. 同一个Node下的child需要有唯一的Name属性值，否则会导致Bean Name冲突   
@@ -134,7 +145,7 @@ public class UsernamePasswordValidator implements Validator {
    以上两种方法至少选一个，如果都提供会优先选择构造函数的方式注入Child Unit，都不提供初始化时会抛出`NotWritablePropertyException`。
  
 
-###获取Bean Name
+### 获取Bean Name
 + `XunitFactory`的Bean Name  
   + 如果name属性不为空，则格式为 ${packageId}.${name}
   + 如果name属性为空，则会用配置文件path生成
@@ -157,7 +168,7 @@ public class UsernamePasswordValidator implements Validator {
    则Factory的Bean Name为"test.MyFlow"，Chain的Bean Name为"test.MyFlow:MyChain2"，Processor的Bean Name为"test.MyFlow:MyChain2:unit1"  
 
 
-###问题
+### 问题
 1. 需要给Unit的实现类加上@Component或者其派生注解吗？  
 所有被扫描的xUnit配置文件中的Unit实现类都会自动注册为Bean，强烈不建议再添加`@Component`或其派生注解，可能会导致错误
 2. Bean用法有什么区别  
