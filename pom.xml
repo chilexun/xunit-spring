@@ -15,7 +15,7 @@
 		<github.global.server>github</github.global.server>
 		<file_encoding>UTF-8</file_encoding>
 		<xunit.version>0.9.3</xunit.version>
-		<spring.version>4.3.18.RELEASE</spring.version>
+		<spring.version>5.2.22.RELEASE</spring.version>
 		<junit.version>4.12</junit.version>
 	</properties>
 	<dependencies>
